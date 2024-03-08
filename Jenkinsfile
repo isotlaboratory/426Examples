@@ -1,11 +1,23 @@
+Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent {
-        docker { image 'node:20.11.1-alpine3.19' }
+    agent any
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
